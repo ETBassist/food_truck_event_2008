@@ -23,7 +23,7 @@ class Event
   end
   
   def total_inventory
-    items = @food_trucks.reduce(Hash.new {|h, k| h[k] = {}}) do |collector, truck|
+    @food_trucks.reduce(Hash.new {|h, k| h[k] = {}}) do |collector, truck|
       truck.inventory.each do |item, quantity|
         if !collector[item][:quantity].nil?
           collector[item][:quantity] += quantity
@@ -35,6 +35,15 @@ class Event
         collector[item][:food_trucks] = collector[item][:food_trucks].flatten.uniq
       end
       collector
+    end
+  end
+
+  def overstocked_items
+    items = total_inventory.select do |item, item_hash|
+      item_hash[:quantity] >= 50 && item_hash[:food_trucks].length > 1
+    end
+    items.map do |item, hash|
+      item
     end
   end
 end
