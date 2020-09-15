@@ -21,4 +21,21 @@ class Event
       truck.inventory.keys.include?(item)
     end
   end
+  
+  def total_inventory
+    items = @food_trucks.reduce(Hash.new {|h, k| h[k] = {}}) do |collector, truck|
+      truck.inventory.each do |item, quantity|
+        if !collector[item][:quantity].nil?
+          collector[item][:quantity] += quantity
+          collector[item][:food_trucks] << [truck]
+        else
+          collector[item][:quantity] = quantity
+          collector[item][:food_trucks] = [truck]
+        end
+        collector[item][:food_trucks] = collector[item][:food_trucks].flatten.uniq
+      end
+      collector
+    end
+  end
 end
+

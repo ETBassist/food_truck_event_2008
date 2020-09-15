@@ -61,7 +61,7 @@ class EventTest < MiniTest::Test
     assert_equal 243.75, @food_truck3.potential_revenue
   end
 
-  def test_it_can_find_total_inventory_of_items
+  def test_it_can_find_total_inventory_of_items # Got stuck here, moving on
     @event.add_food_truck(@food_truck)
     @event.add_food_truck(@food_truck2)
     @event.add_food_truck(@food_truck3)
@@ -72,5 +72,9 @@ class EventTest < MiniTest::Test
                   @item4 => {quantity: 50, food_trucks: [@food_truck2]},
                   }
     assert_equal expected, @event.total_inventory
+  end
+
+  def test_it_can_find_overstocked_items
+    # nevermind, looks like I need the other method for this
   end
 end
