@@ -41,6 +41,6 @@ class EventTest < MiniTest::Test
     @event.add_food_truck(@food_truck)
     @event.add_food_truck(@food_truck2)
     @event.add_food_truck(@food_truck3)
-    assert_equal ["Rocky Mountain Pies", "Ba-Nom-A-Nom", "Palisade Peach Shack"], @event.food_truck_names
+    assert_equal ["Rocky Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"], @event.food_truck_names
   end
 end
