@@ -14,7 +14,7 @@ class ItemTest < MiniTest::Test
   end
 
   def test_can_get_name_of_item_and_price
-    assert_equal "Applie Pie (Slice)", @item2.name
+    assert_equal "Apple Pie (Slice)", @item2.name
     assert_equal 2.50, @item2.price
   end
 end
