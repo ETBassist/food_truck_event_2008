@@ -46,5 +46,14 @@ class Event
       item
     end
   end
+
+  def sorted_item_list
+    items = total_inventory.map do |item, item_hash|
+      item.name
+    end
+    items.sort_by do |item|
+      item[0]
+    end
+  end
 end
 
