@@ -1,5 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
+require './lib/item'
 
 class ItemTest < MiniTest::Test
   def setup
@@ -8,7 +9,7 @@ class ItemTest < MiniTest::Test
   end
 
   def test_it_exists
-    assert_instance of Item, @item1
-    assert_instance of Item, @item2
+    assert_instance_of Item, @item1
+    assert_instance_of Item, @item2
   end
 end
